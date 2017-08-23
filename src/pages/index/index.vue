@@ -15,8 +15,13 @@
                             <img v-lazy="item.src" alt="" class="img">
                         </div>
                         <div class="text-wrap">
-                            {{item.title}}
-                        </div>
+                            <h3 class="title">
+                                {{item.title}}
+                            </h3>
+                            <span class="time">
+                                {{item.time}}
+                            </span>
+                        </div>                    
                     </li>
                 </ul>
             </scroll>
@@ -95,7 +100,6 @@ export default {
         width 100%
         .list-item
             display flex
-            align-items center
             height: 200px
             font-size: 32px
             padding 20px
@@ -103,6 +107,7 @@ export default {
             overflow hidden
             box-sizing border-box
             .cover-wrap
+                align-self center
                 width 200px
                 max-height 160px
                 overflow hidden
@@ -112,10 +117,16 @@ export default {
                     width 200px
                     height auto
             .text-wrap
+                position relative
                 margin-left 20px
                 flex-fix()
                 line-height 1.4
                 font-size 30px
-                align-self start
+                .time
+                    position absolute
+                    bottom 0
+                    right 0
+                    font-size 24px
+                    color #999
 </style>
 
