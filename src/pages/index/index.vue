@@ -12,7 +12,7 @@
                 <ul class="list-content">
                     <li  class="list-item border-bottom-1px" v-for="item in newsList">
                         <div class="cover-wrap">
-                            <img :src="item.src" alt="" class="img">
+                            <img v-lazy="item.src" alt="" class="img">
                         </div>
                         <div class="text-wrap">
                             {{item.title}}
@@ -90,7 +90,6 @@ export default {
     top 120px
     bottom 0
     width 100%
-    // margin-top 20px
     box-sizing border-box
     .list-content
         width 100%
