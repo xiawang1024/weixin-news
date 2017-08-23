@@ -1,5 +1,5 @@
 <template>
-    <section class="index">
+    <section class="inner">
         
     正文页
 
@@ -8,7 +8,7 @@
 
 <script>
 export default {
-    name:'index',
+    name:'inner',
     data() {
         return {
             

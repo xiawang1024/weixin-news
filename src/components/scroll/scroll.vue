@@ -3,7 +3,7 @@
     <div>
       <slot>
         <ul class="list-content">
-          <li @click="clickItem(item)" class="list-item" v-for="item in data">{{item}}</li>
+          <li @click="clickItem(item)" class="list-item" v-for="item in data">{{item.title}}</li>
         </ul>
       </slot>
       <slot name="pullup"
@@ -43,8 +43,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  // import BScroll from '../../../src/index'
-    import BScroll from 'scroll/index'
+  import BScroll from 'better-scroll'
   import Loading from '../loading/loading.vue'
   import Bubble from '../bubble/bubble.vue'
 
@@ -57,7 +56,9 @@
     props: {
       data: {
         type: Array,
-        default: []
+        default: function() {
+          return []
+        }
       },
       probeType: {
         type: Number,
@@ -249,39 +250,41 @@
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
-  .list-wrapper
-    position: absolute
-    left: 0
-    top: 0
-    right: 0
-    bottom: 0
-    overflow: hidden
+@import '../../common/stylus/mixin'
+.list-wrapper
+  position: absolute
+  left: 0
+  top: 0
+  right: 0
+  bottom: 0
+  overflow: hidden
+  background: #fff
+  .list-content
+    position: relative
+    z-index: 10
     background: #fff
-    .list-content
-      position: relative
-      z-index: 10
-      background: #fff
-      .list-item
-        height: 60px
-        line-height: 60px
-        font-size: 18px
-        padding-left: 20px
-        border-bottom: 1px solid #e5e5e5
-    .pulldown-wrapper
-      position: absolute
-      width: 100%
-      left: 0
-      display: flex
-      justify-content center
-      align-items center
-      transition: all
-      .after-trigger
-        margin-top: 10px
-    .pullup-wrapper
-      width: 100%
-      display: flex
-      justify-content center
-      align-items center
-      padding: 1rem 0
-
+    // .list-item
+    //   height: 200px
+    //   line-height: 200px
+    //   font-size: 32px
+    //   padding-left: 20px
+    //   border-bottom: 1px solid #e5e5e5
+    //   overflow hidden
+  .pulldown-wrapper
+    position: absolute
+    width: 100%
+    left: 0
+    display: flex
+    justify-content center
+    // align-items center
+    transition: all
+    font-size 30px
+    .after-trigger
+      margin-top: 5px
+  .pullup-wrapper
+    width: 100%
+    display: flex
+    justify-content center
+    align-items center
+    padding: 20px 0
 </style>
