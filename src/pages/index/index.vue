@@ -10,7 +10,10 @@
                 @pullingUp="onPullingUp"
             >                
                 <ul class="list-content">
-                    <li  class="list-item border-bottom-1px" v-for="item in newsList">
+                    <li 
+                        class="list-item border-bottom-1px" 
+                        v-for="item in newsList"
+                        @click="goToInner(item.id)">
                         <div class="cover-wrap">
                             <img v-lazy="item.src" alt="" class="img">
                         </div>
@@ -34,7 +37,7 @@
 import HeaderHome from 'components/header/header'
 import Scroll from 'components/scroll/scroll'
 import Load from 'components/loading/loading'
-import { getNewsList } from "api/index.js"
+import { getNewsList, getNewsData } from "api/index.js"
 export default {
   name:'index',
   components:{
@@ -51,7 +54,7 @@ export default {
       }
   },
   created() {
-      this.getNewsList(this.pageIndex).then((newsList) => {
+      this._getNewsList(this.pageIndex).then((newsList) => {
           setTimeout(() => {
               this.newsList = newsList
           },20)
@@ -64,7 +67,7 @@ export default {
 
   },
   methods:{
-      getNewsList(pageIndex) {
+      _getNewsList(pageIndex) {
           return new Promise((resolve, reject) => {
               getNewsList(pageIndex).then((res) => {
                     let newsList = res.data.list
@@ -73,7 +76,7 @@ export default {
           })
       },
       onPullingDown() {
-        this.getNewsList(1).then((newsList) => {
+        this._getNewsList(1).then((newsList) => {
             setTimeout(() => {
                 this.newsList = newsList
             },20)
@@ -81,11 +84,14 @@ export default {
       },
       onPullingUp() {
           this.pageIndex ++ ;
-          this.getNewsList(this.pageIndex).then((newsList) => {
+          this._getNewsList(this.pageIndex).then((newsList) => {
              setTimeout(() => {
                  this.newsList = this.newsList.concat(newsList)
              },20)
           })
+      },
+      goToInner(id) {
+          this.$router.push({path:'/inner',query:{id}})
       }
   }
 }
