@@ -26,18 +26,21 @@
                 </ul>
             </scroll>
         </section>
+        <load class="loading" :width="60" :height="60" v-show="newsList.length == 0"></load>
     </section>
 </template>
 
 <script>
 import HeaderHome from 'components/header/header'
 import Scroll from 'components/scroll/scroll'
+import Load from 'components/loading/loading'
 import { getNewsList } from "api/index.js"
 export default {
   name:'index',
   components:{
       HeaderHome,
-      Scroll
+      Scroll,
+      Load
   },
   data() {
       return {
@@ -92,7 +95,7 @@ export default {
 @import '../../common/stylus/mixin'
 .news-list
     position absolute
-    top 120px
+    top 100px
     bottom 0
     width 100%
     box-sizing border-box
@@ -128,5 +131,7 @@ export default {
                     right 0
                     font-size 24px
                     color #999
+.loading
+    margin-top 200px
 </style>
 
