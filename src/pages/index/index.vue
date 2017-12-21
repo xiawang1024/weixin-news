@@ -35,8 +35,8 @@
 
 <script>
 import HeaderHome from 'components/header/header'
-import Scroll from 'components/scroll/scroll'
-import Load from 'components/loading/loading'
+import Scroll from 'base/scroll/scroll'
+import Load from 'base/loading/loading'
 import { getNewsList, getNewsData } from "api/index.js"
 export default {
   name:'index',
@@ -49,8 +49,18 @@ export default {
       return {
             pageIndex:1, //当前页数
             newsList:[], //新闻列表
-            pullUpLoad:true,
-            pullDownRefresh:true
+            pullUpLoad:{
+                txt:{
+                    more:'玩命加载中',
+                    nomore:'没有更多数据'
+                },
+                threshold:0
+            },
+            pullDownRefresh:{
+                txt:'更新成功',
+                stop:80,
+                threshold:100
+            }
       }
   },
   created() {
