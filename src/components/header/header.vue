@@ -30,7 +30,7 @@ export default {
     background #1ba2ff
     .logo
         display inline-block
-        height 70px
+        height 60px
         width 100%
         background url('./logo.png') center center no-repeat
         background-size contain

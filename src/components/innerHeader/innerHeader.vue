@@ -1,7 +1,7 @@
 <template>
   <div class="inner-header">
       <span class="back-icon" @click="goHome"></span>
-      <span class="logo">河南广播网</span>
+      <span class="logo"></span>
       <span class="download-app">
           <a href="http://www.hndt.com/app/download/index.html">打开APP</a>
       </span>
@@ -35,14 +35,17 @@ export default {
     text-align center
     .back-icon
         display inline-block
-        margin-left 15px
+        margin-left 30px
         width 80px
         height 50px
         background url('./back.png') left center no-repeat 
         background-size contain
     .logo
-        color #ffffff
-        font-size 40px
+        display inline-block
+        width 100%
+        height 100px
+        background url('./logo.png') center center no-repeat
+        background-size auto 0.8rem
     .download-app
         display inline-block
         margin-right 15px
